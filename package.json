@@ -1,8 +1,9 @@
 {
   "name": "formadate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a facebook-like date formater",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "repository": "tugorez/formadate",
   "author": "tugorez <tugorez@gmail.com>",
   "license": "MIT",
   "files": [
