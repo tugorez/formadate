@@ -1,6 +1,6 @@
 {
   "name": "formadate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a facebook-like date formater",
   "main": "lib/index.js",
   "repository": "tugorez/formadate",
