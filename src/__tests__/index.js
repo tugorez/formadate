@@ -1,7 +1,7 @@
 import mockdate from 'mockdate';
 import formadate from '../index';
 
-mockdate.set('2017-03-13T22:12:39.583Z');
+mockdate.set(new Date('2017-03-13T22:12:39.583Z'));
 
 describe('formadate', () => {
   it('should render the time in am/pm if the date is today', () => {
