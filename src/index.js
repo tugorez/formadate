@@ -4,7 +4,7 @@ const isToday = date => moment(date).isSame(Date.now(), 'day');
 const isThisWeek = date => moment().diff(date, 'days') <= 6;
 const isThisYear = date => moment(date).isSame(Date.now(), 'year');
 
-const formadate = (date = new Date(), locale = 'en') => {
+const formadate = (date, locale = 'en') => {
   moment.locale(locale);
   if (isToday(date)) {
     return moment(date).format('LT');

@@ -5,30 +5,26 @@ mockdate.set('2017-03-13T22:12:39.583Z');
 
 describe('formadate', () => {
   it('should render the time in am/pm if the date is today', () => {
-    const date = new Date('Mon Mar 13 2017 16:04:36 GMT-0500 (EST)');
-    const expected = '4:04 PM';
+    const date = new Date('2017-03-13T21:04:36.000Z');
     const formated = formadate(date);
-    expect(formated).toEqual(expected);
+    expect(formated).toMatchSnapshot();
   });
 
   it('should render the day if the date is in this week', () => {
-    const date = new Date('Tue Mar 07 2017 00:00:00 GMT-0500 (EST)');
-    const expected = 'Tuesday';
+    const date = new Date('2017-03-07T05:00:00.000Z');
     const formated = formadate(date);
-    expect(formated).toEqual(expected);
+    expect(formated).toMatchSnapshot();
   });
 
   it('should render the month and day if date is in this year', () => {
-    const date = new Date('Sun Jan 01 2017 00:00:00 GMT-0500 (EST)');
-    const expected = 'Jan 1';
+    const date = new Date('2017-01-01T05:00:00.000Z');
     const formated = formadate(date);
-    expect(formated).toEqual(expected);
+    expect(formated).toMatchSnapshot();
   });
 
   it('should render the month day and year otherwise', () => {
-    const date = new Date('Sat Dec 31 2016 00:00:00 GMT-0500 (EST)');
-    const expected = 'Dec 31 2016';
+    const date = new Date('2016-12-31T05:00:00.000Z');
     const formated = formadate(date);
-    expect(formated).toEqual(expected);
+    expect(formated).toMatchSnapshot();
   });
 });
