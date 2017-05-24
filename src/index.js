@@ -1,5 +1,7 @@
 import moment from 'moment';
 
+require('moment/locale/es');
+
 const isToday = date => moment(date).isSame(Date.now(), 'day');
 const isThisWeek = date => moment().diff(date, 'days') <= 6;
 const isThisYear = date => moment(date).isSame(Date.now(), 'year');
