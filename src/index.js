@@ -6,10 +6,13 @@ const isToday = date => moment(date).isSame(Date.now(), 'day');
 const isThisWeek = date => moment().diff(date, 'days') <= 6;
 const isThisYear = date => moment(date).isSame(Date.now(), 'year');
 
-const formadate = (date, locale = 'en', fromnow = false) => {
+const formadate = (date, { locale = 'en', fromnow, calendar } = {}) => {
   moment.locale(locale);
   if (fromnow) {
     return moment(date).fromNow();
+  }
+  if (calendar) {
+    return moment(date).calendar();
   }
   if (isToday(date)) {
     return moment(date).format('LT');

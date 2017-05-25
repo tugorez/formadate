@@ -6,9 +6,16 @@ mockdate.set(new Date('2017-03-13T22:12:39.583Z'));
 describe('formadate', () => {
   it('should render the time from now', () => {
     const date = new Date('2017-03-13T21:04:36.000Z');
-    const formated = formadate(date, 'en', true);
+    const formated = formadate(date, { locale: 'en', fromnow: true });
     expect(formated).toMatchSnapshot();
   });
+
+  it('should render the time as calendar', () => {
+    const date = new Date('2017-03-13T21:04:36.000Z');
+    const formated = formadate(date, { locale: 'en', calendar: true });
+    expect(formated).toMatchSnapshot();
+  });
+
   it('should render the time in am/pm if the date is today', () => {
     const date = new Date('2017-03-13T21:04:36.000Z');
     const formated = formadate(date);

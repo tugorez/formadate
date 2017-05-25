@@ -6,6 +6,8 @@ exports[`formadate should render the month and day if date is in this year 1`] =
 
 exports[`formadate should render the month day and year otherwise 1`] = `"Dec 31 2016"`;
 
+exports[`formadate should render the time as calendar 1`] = `"Today at 4:04 PM"`;
+
 exports[`formadate should render the time from now 1`] = `"an hour ago"`;
 
 exports[`formadate should render the time in am/pm if the date is today 1`] = `"4:04 PM"`;
