@@ -15,15 +15,22 @@ const formadate = (date, { locale = 'es', fromnow, calendar } = {}) => {
     return moment(date).calendar();
   }
   if (isToday(date)) {
-    return moment(date).format('LT');
+    const time = moment(date).format('h:mm a');
+    return `hoy a las ${time}`;
   }
   if (isThisWeek(date)) {
-    return moment(date).format('dddd');
+    const day = moment(date).format('dddd');
+    const time = moment(date).format('h:mm a');
+    return `${day} a las ${time}`;
   }
   if (isThisYear(date)) {
-    return moment(date).format('MMM D');
+    const day = moment(date).format('MMM D');
+    const time = moment(date).format('h:mm a');
+    return `${day} a las ${time}`;
   }
-  return moment(date).format('MMM D Y');
+  const day = moment(date).format('MMM D Y');
+  const time = moment(date).format('h:mm a');
+  return `${day} a las ${time}`;
 };
 
 module.exports = formadate;
