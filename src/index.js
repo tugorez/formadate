@@ -16,21 +16,21 @@ const formadate = (date, { locale = 'es', fromnow, calendar } = {}) => {
   }
   if (isToday(date)) {
     const time = moment(date).format('h:mm a');
-    return `hoy a las ${time}`;
+    return time;
   }
   if (isThisWeek(date)) {
     const day = moment(date).format('dddd');
     const time = moment(date).format('h:mm a');
-    return `${day} a las ${time}`;
+    return `${day}, ${time}`;
   }
   if (isThisYear(date)) {
     const day = moment(date).format('MMM D');
     const time = moment(date).format('h:mm a');
-    return `${day} a las ${time}`;
+    return `${day}, ${time}`;
   }
   const day = moment(date).format('MMM D Y');
   const time = moment(date).format('h:mm a');
-  return `${day} a las ${time}`;
+  return `${day}, ${time}`;
 };
 
 module.exports = formadate;
