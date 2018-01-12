@@ -2,5 +2,6 @@
   "env": {
     "jest": true
   },
-  "extends": ["airbnb-base"]
+  "plugins": ["prettier"],
+  "extends": ["airbnb-base", "prettier"]
 }

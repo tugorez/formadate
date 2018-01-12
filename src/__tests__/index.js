@@ -1,42 +1,54 @@
 import mockdate from 'mockdate';
+import moment from 'moment';
 import formadate from '../index';
 
-mockdate.set(new Date('2017-03-13T22:12:39.583Z'));
+const now = new Date('2018-01-12T03:18:54.884Z');
+mockdate.set(now);
 
 describe('formadate', () => {
-  it('should render the time from now', () => {
-    const date = new Date('2017-03-13T21:04:36.000Z');
-    const formated = formadate(date, { locale: 'en', fromnow: true });
-    expect(formated).toMatchSnapshot();
+  it('should render the time', () => {
+    const date = now;
+    const res = formadate(date);
+    expect(res).toMatchSnapshot();
   });
 
-  it('should render the time as calendar', () => {
-    const date = new Date('2017-03-13T21:04:36.000Z');
-    const formated = formadate(date, { locale: 'en', calendar: true });
-    expect(formated).toMatchSnapshot();
+  it('should render the day of the week', () => {
+    const date = moment(now).subtract(6, 'days');
+    const res = formadate(date);
+    expect(res).toMatchSnapshot();
   });
 
-  it('should render the time in am/pm if the date is today', () => {
-    const date = new Date('2017-03-13T21:04:36.000Z');
-    const formated = formadate(date);
-    expect(formated).toMatchSnapshot();
+  it('should render the day and the month', () => {
+    const date = moment(now).subtract(7, 'days');
+    const res = formadate(date);
+    expect(res).toMatchSnapshot();
   });
 
-  it('should render the day if the date is in this week', () => {
-    const date = new Date('2017-03-07T05:00:00.000Z');
-    const formated = formadate(date);
-    expect(formated).toMatchSnapshot();
+  it('should render the day and the month', () => {
+    const date = moment(now).subtract(10, 'months');
+    const res = formadate(date);
+    expect(res).toMatchSnapshot();
   });
 
-  it('should render the month and day if date is in this year', () => {
-    const date = new Date('2017-01-01T05:00:00.000Z');
-    const formated = formadate(date);
-    expect(formated).toMatchSnapshot();
+  it('should render the day and the month', () => {
+    const date = moment(now)
+      .subtract(11, 'months')
+      .subtract(10, 'days');
+    const res = formadate(date);
+    expect(res).toMatchSnapshot();
   });
 
-  it('should render the month day and year otherwise', () => {
-    const date = new Date('2016-12-31T05:00:00.000Z');
-    const formated = formadate(date);
-    expect(formated).toMatchSnapshot();
+  it('should render the day, the month and the year', () => {
+    const date = moment(now)
+      .subtract(11, 'months')
+      .subtract(11, 'days');
+    const res = formadate(date);
+    expect(res).toMatchSnapshot();
+  });
+
+  it('should render the day, the month and the year', () => {
+    const date = moment(now).subtract(2, 'years');
+    const res = formadate(date);
+    expect(res).toMatchSnapshot();
   });
 });

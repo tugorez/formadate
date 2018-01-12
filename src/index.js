@@ -2,35 +2,20 @@ import moment from 'moment';
 
 require('moment/locale/es');
 
-const isToday = date => moment(date).isSame(Date.now(), 'day');
-const isThisWeek = date => moment().diff(date, 'days') <= 6;
-const isThisYear = date => moment(date).isSame(Date.now(), 'year');
+const day = date => moment().diff(date, 'hours') < 24;
+const week = date => moment().diff(date, 'days') < 7;
+const year = date =>
+  moment().diff(date, 'year') < 1 &&
+  (moment().diff(date, 'months') <= 10 ||
+    moment(date).month() !== moment().month());
 
-const formadate = (date, { locale = 'es', fromnow, calendar } = {}) => {
-  moment.locale(locale);
-  if (fromnow) {
-    return moment(date).fromNow();
-  }
-  if (calendar) {
-    return moment(date).calendar();
-  }
-  if (isToday(date)) {
-    const time = moment(date).format('h:mm a');
-    return time;
-  }
-  if (isThisWeek(date)) {
-    const day = moment(date).format('dddd');
-    const time = moment(date).format('h:mm a');
-    return `${day}, ${time}`;
-  }
-  if (isThisYear(date)) {
-    const day = moment(date).format('MMM D');
-    const time = moment(date).format('h:mm a');
-    return `${day}, ${time}`;
-  }
-  const day = moment(date).format('MMM D Y');
-  const time = moment(date).format('h:mm a');
-  return `${day}, ${time}`;
+const formadate = date => {
+  if (day(date)) return moment(date).format('h:mm a');
+  if (week(date)) return moment(date).format('dddd');
+  if (year(date)) return moment(date).format('MMM D');
+  return moment(date).format('Y MMM D');
 };
+
+formadate.locale = locale => moment.locale(locale);
 
 module.exports = formadate;
